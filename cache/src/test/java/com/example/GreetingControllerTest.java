@@ -41,6 +41,7 @@ class GreetingControllerTest {
         log.info("response body\n{}", response.getResponseBody());
     }
 
+    // application.yml에 압축과 관련된 설정을 넣어줘 해결한다.
     @Test
     void testCompression() {
         final var response = webTestClient
