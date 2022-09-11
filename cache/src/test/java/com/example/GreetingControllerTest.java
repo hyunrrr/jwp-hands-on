@@ -25,6 +25,9 @@ class GreetingControllerTest {
     @Autowired
     private WebTestClient webTestClient;
 
+    // response 헤더의 Cache-Control에 no-cache, private을 설정해줘야 함
+    // springMVC에서 제공하는 WebContentInterceptor를 이용해 해결할 수 있다.
+    // CacheWebConfig클래스에서 인터셉터를 추가해줌
     @Test
     void testNoCachePrivate() {
         final var response = webTestClient
