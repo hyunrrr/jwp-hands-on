@@ -58,6 +58,9 @@ class GreetingControllerTest {
         log.info("response body\n{}", response.getResponseBody());
     }
 
+    // "/etag/*"로 오는 모든 요청에 대해 etag를 검사하게 해야 한다.
+    // spring에서 제공하는 ShallowEtagHeaderFilter를 이용하자
+    // EtagFilterConfiguration에 추가하는 코드가 있음
     @Test
     void testETag() {
         final var response = webTestClient
