@@ -86,6 +86,13 @@ class GreetingControllerTest {
      * 보통 정적 파일을 캐싱 무효화하기 위해 캐싱과 함께 버전을 적용시킨다.
      * 정적 파일에 변경 사항이 생기면 배포할 때 버전을 바꿔주면 적용된 캐싱을 무효화(Caching Busting)할 수 있다.
      */
+
+    /**
+     * CacheBustingWebConfig의 addResourceHandlers메서드에 클라이언트가 보낼 요청과 실제 데이터를 찾을 경로를 설정한다.
+     * 클라이언트가 보낼 요청은 캐시버스팅을 사용하기 위해 버저닝이 되어있다.
+     *
+     * 캐싱된 데이터를 사용해도 되는지 확인하기 위해 etagFilterConfiguration에서 etag도 적용해준다.
+     */
     @Test
     void testCacheBustingOfStaticResources() {
         final var uri = String.format("%s/%s/js/index.js", PREFIX_STATIC_RESOURCES, version.getVersion());
