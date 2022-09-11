@@ -25,9 +25,11 @@ class GreetingControllerTest {
     @Autowired
     private WebTestClient webTestClient;
 
-    // response 헤더의 Cache-Control에 no-cache, private을 설정해줘야 함
-    // springMVC에서 제공하는 WebContentInterceptor를 이용해 해결할 수 있다.
-    // CacheWebConfig클래스에서 인터셉터를 추가해줌
+    /**
+     * response 헤더의 Cache-Control에 no-cache, private을 설정해줘야 함
+     * springMVC에서 제공하는 WebContentInterceptor를 이용해 해결할 수 있다.
+     * CacheWebConfig클래스에서 인터셉터를 추가해줌
+     */
     @Test
     void testNoCachePrivate() {
         final var response = webTestClient
@@ -41,7 +43,9 @@ class GreetingControllerTest {
         log.info("response body\n{}", response.getResponseBody());
     }
 
-    // application.yml에 압축과 관련된 설정을 넣어줘 해결한다.
+    /**
+     * application.yml에 압축과 관련된 설정을 넣어줘 해결한다.
+     */
     @Test
     void testCompression() {
         final var response = webTestClient
@@ -58,9 +62,11 @@ class GreetingControllerTest {
         log.info("response body\n{}", response.getResponseBody());
     }
 
-    // "/etag/*"로 오는 모든 요청에 대해 etag를 검사하게 해야 한다.
-    // spring에서 제공하는 ShallowEtagHeaderFilter를 이용하자
-    // EtagFilterConfiguration에 추가하는 코드가 있음
+    /**
+     * "/etag/*"로 오는 모든 요청에 대해 etag를 검사하게 해야 한다.
+     * spring에서 제공하는 ShallowEtagHeaderFilter를 이용하자
+     * EtagFilterConfiguration에 추가하는 코드가 있음
+     */
     @Test
     void testETag() {
         final var response = webTestClient
