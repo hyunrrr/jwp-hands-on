@@ -15,5 +15,7 @@ class UserService {
         return userDao.findById(user.getId());
     }
 
-    private UserService() {}
+    public UserDao getUserDao() {
+        return userDao;
+    }
 }
